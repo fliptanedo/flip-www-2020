@@ -1,0 +1,26 @@
+{{ $st := .page }}
+{{ $columns := $st.Params.design.columns | default "2" }}
+
+<div class="row">
+    <div class="col-12 col-lg-4 section-heading">
+      {{ with $st.Title }}<h1>{{ . | markdownify | emojify }}</h1>{{ end }}
+      {{ with $st.Params.subtitle }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+    </div>
+    <div class="col-12 col-lg-8">
+      <!-- FLIP 2019 -->
+      <div class="row">
+        {{ with $st.Params.teaching }}
+          {{ range .class }}
+            <div class="col-3 teaching">
+             <a href="{{ .website }}"><img class="teachingpic" src="{{ $.Site.BaseURL }}img/teaching/{{ .photo }}"></a>
+             <a href="{{ .website }}">{{ .number }}, {{ .session }}</a> <br />
+             <span class="smaller">{{ .name }}</span>
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+      <!-- /FLIP 2019 -->
+      {{ $st.Content }}
+    </div>
+</div>
+

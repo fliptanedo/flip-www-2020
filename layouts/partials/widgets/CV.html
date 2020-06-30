@@ -1,0 +1,80 @@
+{{ $st := .page }}
+{{ $columns := $st.Params.design.columns | default "2" }}
+
+<div class="row">
+  {{ if ne $columns "1" }}
+    <div class="col-12 col-lg-4 section-heading">
+      <!-- FLIP: h1 -> h2 -->
+      {{ with $st.Title }}<h2>{{ . | markdownify | emojify }}</h2>{{ end }}
+      <!-- /FLIP -->
+      {{ with $st.Params.subtitle }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+      <!-- FLIP -->
+      <p>
+        <a class="btn btn-outline-primary btn-xs" href="{{ $st.Params.cv_pdf }}">
+          Download Complete CV
+        </a>
+      </p>
+      {{ if $st.Params.group_logo }}
+      <p>
+        <img class="sidebarpic" src="{{ $st.Params.group_logo }}">
+        <meta itemprop="image" content="{{ $st.Params.group_logo }}">
+      </p>
+      {{ end }}
+      <!-- /FLIP -->
+    </div>
+    <div class="col-12 col-lg-8">
+      {{ $st.Content }}
+      <!-- FLIP -->
+      <div class="row">
+
+      {{ with $st.Params.interests }}
+      <div class="col-md-5">
+        <h3>{{ i18n "interests" | markdownify }}</h3>
+        <ul class="ul-interests">
+          {{ range .interests }}
+          <li>{{ . | markdownify }}</li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+
+      {{ with $st.Params.education }}
+      <div class="col-md-7">
+        <h3>{{ i18n "education" | markdownify }}</h3>
+        <ul class="ul-edu fa-ul">
+          {{ range .courses }}
+            {{ if .logo }}
+              <img src="{{ $.Site.BaseURL }}img/{{ .logo }}" style="height:1rem; float: left; padding-right: 10px;">
+            {{ else }}
+              <i class="fa-li fas fa-graduation-cap"></i>
+            {{ end }}
+            <div class="description">
+              {{ .course_short }}
+              {{ with .institution_short }}, {{ . }}{{ end }}
+              {{ with .year }}({{ . }}){{ end }}
+              <br />
+            </div>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+
+      </div>
+     {{ with $st.Params.service }}
+      <p style="font-size: .8rem;">
+        <b>Service</b>:
+        {{ range .service }}
+        {{ . | markdownify }} &middot;
+        {{ end }}
+      </p>
+      {{ end }}
+      <!-- /FLIP -->
+    </div>
+  {{ else }}
+    <div class="col-lg-12">
+      {{ with $st.Title }}<h1>{{ . | markdownify | emojify }}</h1>{{ end }}
+      {{ with $st.Params.subtitle }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+      {{ $st.Content }}
+    </div>
+  {{ end }}
+</div>

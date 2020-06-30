@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Assistant Professor
 
 # Organizations/Affiliations
 organizations:
@@ -92,6 +92,6 @@ user_groups:
 - Visitors
 ---
 
-**Flip Tanedo spends a lot of time thinking about dark matter.**
+**Flip Tanedo spends his time thinking about dark matter.**
 
 He grew up in Los Angeles and fell in love with physics after reading *The Physics of Star Trek*. This carried into degrees in mathematics and physics at Stanford, Cambridge, Durham, and a Ph.D at Cornell. After a postdoc at UC Irvine, he is faculty at UC Riverside where he is known for being covered in chalk dust after a long day’s work.

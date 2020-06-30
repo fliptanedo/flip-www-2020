@@ -1,0 +1,52 @@
+{{ $st := .page }}
+{{ $columns := $st.Params.design.columns | default "2" }}
+
+<div class="row">
+    <div class="col-12 col-lg-4 section-heading">
+      {{ with $st.Title }}<h1>{{ . | markdownify | emojify }}</h1>{{ end }}
+      {{ with $st.Params.subtitle }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+    </div>
+    <div class="col-12 col-lg-8">
+      {{ $st.Content }}
+      <!-- FLIP 2019 -->
+      
+      {{ with $st.Params.mygroup }}
+        <ul class="ul-students">
+          {{ range .students }}
+            <li class="ul-students" title="{{ .name }}">
+              <a href="{{ .website }}"><img class="studentpic" src="{{ $.Site.BaseURL }}img/students/{{ .photo }}"></a>
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+
+    <p>
+      <span class="comment">* - co-advised,  ◊ - postdoc, † - undergraduate, ‡ - high-school, § - visiting</span>
+    </p>
+
+    <div class="row comment">
+      <h5>Past Students</h5>
+    </div>
+
+    {{ with $st.Params.mygroup }}
+      {{ range .oldstudents }}
+        <div class="row comment">
+          <div class="col-xs-3">
+            <a href="{{ .website }}" class=comment>
+              {{ .name }}&nbsp;
+            </a>
+          </div>
+          <div class="col-xs-3">
+            {{ .start }} - {{ .end }}&nbsp;
+          </div>
+          <div class="col-xs-6">
+            {{ .position }}, {{ .role }}
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+
+
+    <!-- /FLIP 2019 -->
+    </div>
+</div>
