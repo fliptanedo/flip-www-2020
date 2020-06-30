@@ -1051,9 +1051,13 @@ Note that `flip2018.css` includes a little bit of additional styling for e-mails
 }
 ```
 
-### 11. Additional Pages
+## Don't forget to update menu.toml
 
-Steps 1-10 focused on getting the front page set up. All of the widgets appeared in some specified order on `index.html`. What if we'd like to make another static page? 
+now the site should be up and running. We just needs to update `menu.toml` to make sure we reference each section.
+
+## Additional Pages
+
+The steps above focused on getting the front page set up. All of the widgets appeared in some specified order on `index.html`. What if we'd like to make another static page? 
 
 A good template for this is the `/content/talk/` subdirectory. It contains an `index.md` markdown page with content:
 
