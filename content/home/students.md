@@ -64,7 +64,7 @@ subtitle = ""
   name = "Anagha Satish‡§"
   position = "HS"
   start = "2020"
-  photo = "portrait.jpg"
+  photo = "template_anagha.jpg"
   website = ""
 
 [[mygroup.oldstudents]]
